@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#f2f2f2;
+        }
+
+        .login-box{
+            width:350px;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .login-box h2{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        .input-group{
+            margin-bottom:15px;
+        }
+
+        .input-group label{
+            display:block;
+            margin-bottom:5px;
+        }
+
+        .input-group input{
+            width:100%;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            border:none;
+            background:#007bff;
+            color:white;
+            font-size:16px;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        .error{
+            color:red;
+            text-align:center;
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body style="background-color:hsl(0, 88%, 74%)">
+
+    <div class="login-box">
+        <h2>Login</h2>
+
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" id="username">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="password">
+        </div>
+
+        <div class="input-group">
+        <img src="data:image/png;base64,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" alt="Captcha">
+        </div>
+
+        <div class="input-group">
+            <label>Captcha</label>
+            <input  id="captcha" type="text" placeholder="enter captacha here">
+        </div>
+
+        <div class="input-group">
+
+        <button onclick="login()">Click here to register 👇</button>
+        </div>
+         
+        <p class="error" id="error"></p>
+    </div>
+
+    <script>
+        function login() {
+
+            let username =
+                document.getElementById("username").value;
+
+            let password =
+                document.getElementById("password").value;
+
+            let captcha =
+                document.getElementById("captcha").value;
+              
+
+            // Demo credentials
+            if(username === "user" &&
+               password === "user123"
+                && captcha === "v4xBG")
+            {
+                // Redirect to home page
+                window.location.href = "home.html";
+            }
+            else
+            {
+                document.getElementById("error")
+                .innerText =
+                "Invalid Username or Password";
+            }
+
+
+            
+        }
+
+
+        
+            
+        
+
+    </script>
+
+</body>
+</html>
