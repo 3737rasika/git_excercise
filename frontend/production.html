@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Production</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="raw_materials.html">Raw Materials</a>
+    <a href="weavers.html">Weavers</a>
+    <a href="products.html">Products</a>
+    <a href="production.html">Production</a>
+    <a href="orders.html">Orders</a>
+    <a href="inventory_report.html">Inventory Report</a>
+</div>
+
+<div class="container">
+
+<h2>Production Management</h2>
+
+<!-- ADD SECTION -->
+<div class="card">
+    <h3>Add Production Entry</h3>
+    <input type="number" id="product_id" placeholder="Product ID">
+    <input type="number" id="quantity" placeholder="Quantity">
+    <input type="date" id="date">
+    <button onclick="addProduction()">Add Production</button>
+</div>
+
+<!-- VIEW SECTION -->
+<div class="card">
+    <h3>Production List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="productionTable"></tbody>
+    </table>
+</div>
+
+</div>
+
+<script src="js/production.js"></script>
+
+<style>
+
+    body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+}
+
+.navbar {
+    background: #222;
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+
+input {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background: #f0f0f0;
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory</title>
+
+    <!-- NORMAL PATH (NO url_for) -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="inventory.html">Inventory</a>
+</div>
+
+<div class="container">
+    <h2>Inventory</h2>
+
+    <div class="card">
+        <h3>Daily Production Trend</h3>
+        <canvas id="productionChart"></canvas>
+    </div>
+
+    <div class="card">
+        <h3>Current Stock per Product</h3>
+        <canvas id="stockChart"></canvas>
+    </div>
+</div>
+
+<script src="js/inventory.js"></script>
+
+</body>
+</html>

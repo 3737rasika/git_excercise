@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="raw_materials.html">Raw Materials</a>
+    <a href="weavers.html">Weavers</a>
+    <a href="products.html">Products</a>
+    <a href="production.html">Production</a>
+    <a href="orders.html">Orders</a>
+    <a href="inventory_report.html">Inventory Report</a>
+</div>
+
+<div class="container">
+
+<h2>Orders Management</h2>
+
+<!-- ================= ADD ORDER SECTION ================= -->
+<div class="card">
+    <h3>Add Order</h3>
+
+    <input type="text" id="username" placeholder="User Name">
+    <input type="text" id="phone" placeholder="Phone">
+    <input type="text" id="address" placeholder="Address">
+
+    <select id="product">
+        <option value="">Loading products...</option>
+    </select>
+
+    <input type="number" id="quantity" placeholder="Quantity">
+    <input type="date" id="date">
+
+    <button onclick="addOrder()">Place Order</button>
+</div>
+
+<!-- ================= VIEW ORDERS SECTION ================= -->
+<div class="card">
+    <h3>Orders List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Expected Date</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="ordersTable"></tbody>
+    </table>
+</div>
+
+</div>
+
+<script src="js/orders.js"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+}
+
+.navbar {
+    background: #222;
+    padding: 12px;
+}
+
+.navbar a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.container {
+    width: 85%;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+input, select {
+    padding: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background: #f0f0f0;
+}
+
+.danger {
+    background: red;
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Handloom Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // ✅ ROLE PROTECTION (ADMIN ONLY)
+    if (localStorage.getItem("role") !== "admin") {
+        window.location.href = "/";
+    }
+
+    // ✅ LOGOUT FUNCTION
+    function logout() {
+        localStorage.clear();
+        window.location.href = "/";
+    }
+
+    // ✅ SET USERNAME WHEN PAGE LOADS
+    window.onload = function () {
+        const username = localStorage.getItem("loggedInUser");
+        if (username) {
+            document.getElementById("username").innerText = username;
+        }
+    };
+</script>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <h1>Handloom Management System</h1>
+    <p>Manage production, inventory & orders efficiently</p>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="raw_materials.html">Raw Materials</a>
+    <a href="weavers.html">Weavers</a>
+    <a href="products.html">Products</a>
+    <a href="production.html">Production</a>
+    <a href="orders.html">Orders</a>
+    <a href="inventory_report.html">Inventory Report</a>
+    <a href="#" onclick="logout()">Logout</a>
+</nav>
+
+<!-- WELCOME -->
+<section class="welcome">
+    <h2>Welcome, <span id="username"></span> 👋</h2>
+    <p>Here is today’s handloom inventory overview</p>
+</section>
+
+<!-- SUMMARY CARDS -->
+<section class="summary">
+    <div class="summary-card">
+        <h3 id="totalProducts">0</h3>
+        <p>Total Products</p>
+    </div>
+    <div class="summary-card">
+        <h3 id="totalStock">0</h3>
+        <p>Total Stock</p>
+    </div>
+    <div class="summary-card">
+        <h3 id="totalOrders">0</h3>
+        <p>Total Orders</p>
+    </div>
+</section>
+
+<!-- CHART -->
+<section class="chart-section">
+    <h2>Stock Report</h2>
+    <canvas id="stockChart"></canvas>
+</section>
+
+<!-- DASHBOARD -->
+<section class="dashboard">
+
+    <div class="card">
+        <h2>Raw Materials</h2>
+        <p>Add & manage yarn, cotton, silk etc.</p>
+    </div>
+
+    <div class="card">
+        <h2>Weavers</h2>
+        <p>Maintain weaver details & contacts</p>
+    </div>
+
+    <div class="card">
+        <h2>Products</h2>
+        <p>Manage handloom products & prices</p>
+    </div>
+
+    <div class="card">
+        <h2>Production</h2>
+        <p>Track daily production & stock</p>
+    </div>
+
+    <div class="card">
+        <h2>Orders</h2>
+        <p>Customer orders & billing</p>
+    </div>
+
+</section>
+
+<footer class="footer">
+    © 2026 Handloom Management System
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    
+    <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<div class="container">
+
+<!-- ================= COLLECTIONS SECTION ================= -->
+<div id="collectionsSection">
+
+<h2>Our Handloom Collections</h2>
+
+<div class="collections-grid">
+
+    <!-- CARD 1 -->
+    <div class="collection-card">
+        <img src="images/image1.png.jpeg" alt="Collection Image">
+        <h3> Tissue Silk Saree</h3>
+        <p class="price">₹18500</p>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="collection-card">
+        <img src="images/image2.png.jpeg" alt="Collection Image">
+        <h3>Banarasi Silk Saree</h3>
+        <p class="price">₹17300</p>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="collection-card">
+        <img src="images/image3.png.jpeg" alt="Collection Image">
+        <h3>Soft Silk Saree</h3>
+        <p class="price">₹17500</p>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="collection-card">
+        <img src="images/image4.png.jpeg" alt="Collection Image">
+        <h3>Silk Shirt</h3>
+        <p class="price">₹5600</p>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="collection-card">
+        <img src="images/image5.png.jpeg" alt="Collection Image">
+        <h3>Linen Shirt</h3>
+        <p class="price">₹4000</p>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="collection-card">
+        <img src="images/image6.png.jpeg" alt="Collection Image">
+        <h3>Silk Salwar</h3>
+        <p class="price">8700</p>
+    </div>
+
+    <!-- CARD 7 -->
+    <div class="collection-card">
+        <img src="images/image7.png.jpeg" alt="Collection Image">
+        <h3>SilkCotton Salwar</h3>
+        <p class="price">₹5900</p>
+    </div>
+
+    <!-- CARD 8 -->
+    <div class="collection-card">
+        <img src="images/image8.png.jpeg" alt="Collection Image">
+        <h3>Kanchivara Silk Saree</h3>
+        <p class="price">₹21600</p>
+    </div>
+
+    <!-- CARD 9 -->
+    <div class="collection-card">
+        <img src="images/image9.png.jpeg" alt="Collection Image">
+        <h3>Cotton Salwar</h3>
+        <p class="price">₹5070</p>
+    </div>
+
+</div>
+
+<div class="go-order">
+    <button onclick="showOrders()">Go To Orders</button>
+</div>
+
+</div>
+
+
+<!-- ================= ORDERS SECTION ================= -->
+ <div id="ordersSection" style="display:none;">
+
+<h2>User Orders Panel</h2>
+
+<div class="card">
+    <h3>Place Order</h3>
+
+    <input type="text" id="user_name" placeholder="Your Name">
+    <input type="text" id="phone" placeholder="Phone Number">
+    <input type="text" id="address" placeholder="Address">
+
+    <select id="product_name">
+        <option value="">Select Product</option>
+    </select>
+
+    <input type="number" id="quantity" placeholder="Quantity">
+    <input type="date" id="expected_date">
+
+    <button onclick="addOrder()">Place Order</button>
+</div>
+
+<div class="card">
+    <h3>Orders List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Expected Date</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="ordersTable"></tbody>
+    </table>
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+    <button onclick="showCollections()">Back To Collections</button>
+</div>
+
+</div>
+
+
+<script>
+
+if (localStorage.getItem("role") !== "user") {
+    window.location.href = "/";
+}
+
+function logout() {
+    sessionStorage.removeItem("userOrders");  // 🔥 CLEAR SESSION ORDERS
+    localStorage.clear();
+    window.location.href = "/";
+}
+
+function showOrders() {
+    document.getElementById("collectionsSection").style.display = "none";
+    document.getElementById("ordersSection").style.display = "block";
+}
+
+function showCollections() {
+    document.getElementById("collectionsSection").style.display = "block";
+    document.getElementById("ordersSection").style.display = "none";
+}
+
+async function loadProducts() {
+    const res = await fetch("http://127.0.0.1:5000/products");
+    const products = await res.json();
+
+    const select = document.getElementById("product_name");
+
+    products.forEach(product => {
+        const option = document.createElement("option");
+        option.value = product.name;
+        option.textContent = product.name;
+        select.appendChild(option);
+    });
+}
+
+loadProducts();
+
+
+</script>
+
+<script src="js/orders.js"></script>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+}
+
+.navbar {
+    background: hwb(239 3% 70%);
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.container {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.collection-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.collection-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.collection-card h3 {
+    margin: 8px 0 5px 0;
+}
+
+.price {
+    font-weight: bold;
+    color: hwb(256 44% 6%);
+}
+
+.go-order {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+button {
+    padding: 10px 20px;
+    background: hsl(211, 78%, 35%);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background: #f0f0f0;
+}
+
+</style>
+
+</body>
+</html>

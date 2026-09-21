@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+}
+
+/* HEADER */
+.header {
+    background: linear-gradient(to right, #1e293b, #334155);
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #0f172a;
+    padding: 12px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navbar a:hover {
+    color: #38bdf8;
+}
+
+/* DASHBOARD */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card h2 {
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #64748b;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+.footer {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* WELCOME */
+.welcome {
+    padding: 25px 40px;
+}
+
+.welcome h2 {
+    color: #1e293b;
+}
+
+/* SUMMARY CARDS */
+.summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 0 40px 30px;
+}
+
+.summary-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.summary-card h3 {
+    font-size: 32px;
+    color: #2563eb;
+}
+
+.summary-card p {
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* CHART */
+.chart-section {
+    background: white;
+    margin: 0 40px 80px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
